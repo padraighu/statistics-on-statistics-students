@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Statistics on Statistics Students📈👨‍🎓️👩‍🎓📊</title>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script src="chart.js"></script>
+    <script src="scroll.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-100232370-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+
+<main id="main-wrapper">
+    <div class="header-text">
+        <h1>Statistics on Statistics Students📈👨‍🎓️👩‍🎓📊</h1>
+        <h3>by Yifei Hu</h3>
+    </div>
+    <div class="intro-text">
+        <div>
+            "The second effect, one that struck me at the time as tragic, was a strange surge in the study of economics. 
+            At Harvard in 1987 the course in the principles of economics had forty sections and a thousand students;
+            the enrollment tripled in ten years."<br>
+            - Michael Lewis, <i>Liar's Poker</i>
+        </div>
+        <br><br>
+        <div>
+            Every year, the Statistics Departments at Rice, Harvard and Duke publish lists of recent undergraduate alumni who studied statistics. 
+            I collected data about these alumni who graduated in 2018 through online research and hoped to discover interesting insights about the statistics students at these schools.
+            Below are my discoveries, visualized in graphs. 
+        </div>
+    </div>
+    <div class="body-wrapper">
+        <div class="text-column">
+            <div class="section-text" id="empty-section"></div>
+            <div class="section-text">
+                Popularity of statistics experienced explosive growth at all 3 schools in recent years. On average there is a <mark>850%</mark> growth in number statistics students from 2009 to 2018. 
+            </div>
+            <div class="section-text">
+                Across the 3 schools, about <mark>34.8%</mark> statistics students are women. Duke has the hightest at <mark>40%</mark>, while Harvard has the lowest at <mark>31%</mark>.
+                In 2016 <mark>42.4%</mark> is the national percentage of mathematics and statistics undergraduate degrees awarded to women (<a href="https://ncses.nsf.gov/pubs/nsf19304/digest/field-of-degree-women#mathematics-and-statistics">source</a>).
+            </div>
+            <div class="section-text"> 
+                Many statistics students paired statistics with other subjects in their undergraduate degree. The 2 most common ones are computer science and economics. 
+                Economics is the most popular among Rice stats students (at <mark>43%</mark>), and Duke stats students preferred CS the most (at <mark>37%</mark>), while the majority of Harvard stats students chose statistics alone (at <mark>63%</mark>).
+            </div>
+            <div class="section-text">
+                Post graduation, finance, technology and consulting are the top industries statistics students who pursued full-time work ended up. <mark>45%</mark> of Rice stats students went into finance,
+                while Harvard has the highest percentage of stats students going into consulting, at <mark>35%</mark>. 
+            </div>
+            <div class="section-text">
+                Unsurprisingly, the top employers of statistics students across the 3 schools all come from the 3 aforementioned industries. 
+                Many are well known, leading companies in their respective industries.
+            </div>
+            <div class="section-text">
+                The prevelance of the catch-all, nebulous <mark>"analyst"</mark> and <mark>"associate"</mark> in job titles of these students reflects most of the statistics students got white collar, service sector jobs.
+                On the other hand, frequently used nouns like <mark>"software"</mark>, <mark>"data"</mark>, <mark>"research"</mark> and <mark>"business"</mark> give clues to their specific job functions.
+            </div>
+            <div class="section-text">
+                Houston managed to retain <mark>27%</mark> Rice statistics students, becoming the top 1 metro area where Rice stats students live after graduation.
+                Following Houston, New York and Bay Area attracted many of the rest.
+            </div>
+            <div class="section-text">
+                NYC attracted a whopping <mark>46%</mark> percent of Harvard stats students, while another <mark>19%</mark> chose to stay in Boston, 
+                and another <mark>15%</mark> went to the Bay Area on the other coast.  
+            </div>
+            <div class="section-text">
+                Raleigh-Durham tied Bay Area in the number of Duke statistics students, with both at <mark>21%</mark>, while New York came in third at around <mark>16%</mark>.<br><br>
+                Across these schools, we see significant amount of stats students going to major metro areas on both East Coast and West Coast after graduation. 
+                Still many chose to remain in the areas where the schools are located, reflecting the local employer's tendencies to hire students from nearby schools.
+            </div>
+        </div>
+
+        <div class="graph-column">
+            <div class="chart" id="chart-container">
+                
+            </div>
+            <div class="composite-chart">
+                <div class="sub-chart" id="left-chart">
+
+                </div>
+                <div class="sub-chart" id="right-chart">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="credits">
+        Data compiled from alumni pages from Statistics Departments at 
+        <a href="https://statistics.rice.edu/undergraduate_alumni">Rice</a>, 
+        <a href="https://statistics.fas.harvard.edu/alumni">Harvard</a> and 
+        <a href="https://stat.duke.edu/people/undergraduate-alumni">Duke</a>,
+        with additional data collected from Linkedin profiles of alumni<br>
+        Tools: <a href="https://www.highcharts.com">Highcharts</a>, <a href="https://github.com/russellgoldenberg/scrollama">Scrollama</a><br>
+        Location analysis inspired by <a href="https://www.wsj.com/graphics/where-graduates-move-after-college/">WSJ's <i>Where Graduates Move After College</i></a>
+    </div>
+</main>
