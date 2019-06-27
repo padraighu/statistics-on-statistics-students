@@ -30,6 +30,7 @@
 
 .chart {
     position: sticky; 
+    position: -webkit-sticky;
     top: 25%;
 }
 
@@ -44,6 +45,7 @@
 
 .composite-chart {
     position: sticky;
+    position: -webkit-sticky;
     top: 25%;
     width: 100%;
     display: flex;
